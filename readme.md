@@ -8,5 +8,5 @@
 * ### O código deve seguir conforme diagrama UML em anexo
 
 ## Diagrama de Classes UML
-
+![](https://github.com/MaercioMamedes/desafio_Python_DIO_03/blob/master/docs/Trilha%20Python%20-%20desafio.png?raw=true)
 
