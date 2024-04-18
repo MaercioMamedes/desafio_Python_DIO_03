@@ -3,7 +3,7 @@ class Cliente:
         self._endereco: str = endereco
         self._lista_contas: list[Conta] = []
 
-    def realizar_transacao(self, conta: Conta, transacao: Transacao) -> dict:
+    def realizar_transacao(self, conta, transacao) -> dict:
         if conta in self._lista_contas:
             registro = transacao.registrar(conta)
             return registro
@@ -11,7 +11,7 @@ class Cliente:
         else:
             raise Exception("erro de transação")
 
-    def adicionar_conta(self, conta: Conta) -> None:
+    def adicionar_conta(self, conta) -> None:
 
         if conta.cliente == self:
             self._lista_contas.append(conta)
