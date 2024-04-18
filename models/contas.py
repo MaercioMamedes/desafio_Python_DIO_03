@@ -38,8 +38,8 @@ class Conta(ABC):
         return self._cliente
 
     @classmethod
-    def nova_conta(cls, cliente, numero: int):
-        return cls(cliente, numero)
+    def nova_conta(cls, cliente):
+        return cls(cliente)
 
     @abstractmethod
     def sacar(self, valor: float) -> bool:
@@ -49,12 +49,16 @@ class Conta(ABC):
     def depositar(self, valor: float) -> bool:
         pass
 
+    @abstractmethod
+    def gerar_extrato(self):
+        pass
+
 
 class ContaCorrete(Conta):
     def __init__(self, cliente):
         super().__init__(cliente)
-        self._limite: float
-        self._limite_saques: int
+        self._limite: float = 500.0
+        self._limite_saques: int = 3
 
     def sacar(self, valor: float) -> bool:
         try:
@@ -81,3 +85,20 @@ class ContaCorrete(Conta):
 
         except Exception:
             return False
+
+    def gerar_extrato(self):
+
+        extrato = """
+        =====================================
+                    EXTRATO
+        =====================================
+        
+        """
+
+        transacoes = self._historico.transacoes
+
+        for transacao in transacoes:
+            extrato += f"{transacao['data_hora']}      {transacao['transacao']} R$ {transacao['valor']}"
+        extrato += f"\n\nSALDO: R$ {self.saldo}"
+
+        return extrato

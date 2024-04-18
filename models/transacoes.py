@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 
 class Transacao(ABC):
@@ -13,7 +14,17 @@ class Deposito(Transacao):
         self._valor = valor
 
     def registrar(self, conta) -> dict:
-        registro = {'dado': "dicionário com dados da operação"}
+        # Obter a data e hora atual
+        agora = datetime.now()
+
+        # Formatar a data e hora
+        data_hora_formatada = agora.strftime("%d-%m-%Y %H:%M")
+        registro = {
+            'transacao': "Depósito",
+            'valor': self._valor,
+            'data_hora': data_hora_formatada,
+        }
+
         return registro
 
 
@@ -22,5 +33,14 @@ class Saque(Transacao):
         self._valor = valor
 
     def registrar(self, conta):
-        registro = {'dado': "dicionário com dados da operação"}
+        # Obter a data e hora atual
+        agora = datetime.now()
+
+        # Formatar a data e hora
+        data_hora_formatada = agora.strftime("%d-%m-%Y %H:%M")
+        registro = {
+            'transacao': "Saque",
+            'valor': self._valor,
+            'data_hora': data_hora_formatada,
+        }
         return registro
