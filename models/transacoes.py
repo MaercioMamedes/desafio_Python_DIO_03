@@ -12,8 +12,9 @@ class Deposito(Transacao):
     def __init__(self, valor: float):
         self._valor = valor
 
-    def registrar(self, conta: Conta):
-       pass
+    def registrar(self, conta: Conta) -> dict:
+        registro = {'dado': "dicionário com dados da operação"}
+        return registro
 
 
 class Saque(Transacao):
@@ -21,4 +22,5 @@ class Saque(Transacao):
         self._valor = valor
 
     def registrar(self, conta: Conta):
-        pass
+        registro = {'dado': "dicionário com dados da operação"}
+        return registro
