@@ -8,10 +8,10 @@ from .historico import Historico
 class Conta(ABC):
     _contas_criadas = {}
 
-    def __init__(self, cliente: Cliente, numero: int = 0, agencia: str = "0001"):
+    def __init__(self, cliente, numero: int = 0):
         self._saldo = 0
         self._numero: int = numero
-        self._agencia: str = agencia
+        self._agencia: str = "0001"
         self._cliente: Cliente = cliente
         self._historico: Historico = Historico()
 
@@ -38,7 +38,7 @@ class Conta(ABC):
         return self._cliente
 
     @classmethod
-    def nova_conta(cls, cliente: Cliente, numero: int) -> Conta:
+    def nova_conta(cls, cliente, numero: int):
         return cls(cliente, numero)
 
     @abstractmethod
@@ -51,8 +51,8 @@ class Conta(ABC):
 
 
 class ContaCorrete(Conta):
-    def __init__(self, agencia: str, cliente: Cliente):
-        super().__init__(agencia, cliente)
+    def __init__(self, cliente):
+        super().__init__(cliente)
         self._limite: float
         self._limite_saques: int
 
