@@ -3,8 +3,9 @@ class Cliente:
         self._endereco: str = endereco
         self._conta: list[Conta] = conta
 
-    def realizar_trasacao(self, conta: Conta, transacao: Transacao):
-        pass
+    def realizar_transacao(self, conta: Conta, transacao: Transacao):
+
+
 
     def adicionar_conta(self, conta: Conta):
         pass

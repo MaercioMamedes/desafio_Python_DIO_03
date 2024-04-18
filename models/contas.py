@@ -1,3 +1,5 @@
+from .transacoes import Deposito, Saque
+
 class Conta:
     def __init__(self, agencia: str, cliente: Cliente):
         self._saldo = 0
@@ -27,7 +29,12 @@ class Conta:
         pass
 
     def depositar(self, valor: float) -> bool:
-        pass
+
+        """Criar transacao """
+        deposito = Deposito(valor)
+        self._cliente.realizar_transacao(self, deposito)
+
+        return True
 
 
 class ContaCorrete(Conta):
